@@ -2,6 +2,7 @@ package com.test.quizzapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,28 +36,39 @@ public class Login extends AppCompatActivity {
 
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                //Step 4: Traitement
-                String login = etLogin.getText().toString().trim();
-                String pswd = etPassword.getText().toString().trim();
-                if (!etLogin.getText().toString().isEmpty() && !etPassword.getText().toString().isEmpty() && etPassword.length()>6){
-                    fAuth.signInWithEmailAndPassword(login, pswd).addOnCompleteListener(new OnCompleteListener<AuthResult>()
-                    {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()) {
-                                Toast.makeText(Login.this, "Connecté avec succès!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(Login.this, Quiz1.class));
-                            }
-                            else {
-                                Toast.makeText(Login.this,"Login or password incorrect! Error: "+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                            }
+            public void onClick(View v) {
+
+                String email = etLogin.getText().toString().trim();
+                String password = etPassword.getText().toString().trim();
+
+                if(TextUtils.isEmpty(email)){
+                    etLogin.setError("Email is Required.");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(password)){
+                    etPassword.setError("Password is Required.");
+                    return;
+                }
+
+                if(password.length() < 6){
+                    etPassword.setError("Password must be > 6 Characters");
+                    return;
+                }
+                // authenticate the user
+
+                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), Quiz1.class));
+                        }else {
+                            Toast.makeText(Login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
-                    });
-                }
-                else {
-                    Toast.makeText(Login.this,"Please fill the required fields!",Toast.LENGTH_SHORT).show();
-                }
+                    }
+                });
+
             }
         });
         tvRegister.setOnClickListener(new View.OnClickListener() {
