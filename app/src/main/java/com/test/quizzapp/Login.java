@@ -18,7 +18,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
-    //Step 1: Declaration
     EditText etLogin, etPassword;
     Button bLogin;
     TextView tvRegister;
@@ -29,35 +28,32 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Step 2: Recuperation des ids
         etLogin = (EditText) findViewById(R.id.etMail);
         etPassword = (EditText) findViewById(R.id.etPassword);
         bLogin = (Button) findViewById(R.id.bLogin);
         tvRegister = (TextView) findViewById(R.id.tvRegister);
+        fAuth = FirebaseAuth.getInstance();
 
-        //Step 3: Association de listeners
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String email = etLogin.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email)){
-                    etLogin.setError("Email is Required.");
+                    etLogin.setError("Email is required.");
                     return;
                 }
 
                 if(TextUtils.isEmpty(password)){
-                    etPassword.setError("Password is Required.");
+                    etPassword.setError("Password is required.");
                     return;
                 }
 
                 if(password.length() < 6){
-                    etPassword.setError("Password must be > 6 Characters");
+                    etPassword.setError("Password must be > 6 characters");
                     return;
                 }
-                // authenticate the user
 
                 fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -76,7 +72,6 @@ public class Login extends AppCompatActivity {
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Step 4: Traitement
                 startActivity(new Intent(Login.this, Register.class));
             }
         });
