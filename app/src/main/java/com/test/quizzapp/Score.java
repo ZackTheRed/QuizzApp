@@ -36,6 +36,7 @@ public class Score extends AppCompatActivity {
                 finish();
             }
         });
+
         bTry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,5 +44,11 @@ public class Score extends AppCompatActivity {
             }
         });
 
+        bTry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Score.this,userLocation.class));
+            }
+        });
     }
 }

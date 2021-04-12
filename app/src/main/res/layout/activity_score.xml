@@ -45,6 +45,12 @@
             android:layout_weight="2"
             android:text="Try again"
             android:id="@+id/bTry"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Location"
+            android:id="@+id/bLoc"/>
     </LinearLayout>
 
 
