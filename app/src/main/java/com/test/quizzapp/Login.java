@@ -23,17 +23,19 @@ public class Login extends AppCompatActivity {
     Button bLogin;
     TextView tvRegister;
     FirebaseAuth fAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         //Step 2: Recuperation des ids
         etLogin = (EditText) findViewById(R.id.etMail);
         etPassword = (EditText) findViewById(R.id.etPassword);
         bLogin = (Button) findViewById(R.id.bLogin);
         tvRegister = (TextView) findViewById(R.id.tvRegister);
-        //Step 3: Association de listeners
 
+        //Step 3: Association de listeners
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,9 +70,9 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
-
             }
         });
+
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
