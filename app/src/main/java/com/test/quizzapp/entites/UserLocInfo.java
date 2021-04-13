@@ -1,4 +1,4 @@
-package com.test.quizzapp;
+package com.test.quizzapp.entites;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.GeoPoint;

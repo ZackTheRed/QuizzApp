@@ -19,15 +19,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
-import com.google.firestore.v1.WriteResult;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import com.test.quizzapp.entites.UserLocInfo;
 
 public class userLocation extends FragmentActivity implements OnMapReadyCallback {
 

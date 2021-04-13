@@ -1,4 +1,4 @@
-package com.test.quizzapp;
+package com.test.quizzapp.entites;
 
 public class Commen {
     public static String login;
