@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 public class Quiz1 extends AppCompatActivity {
     RadioGroup rg;
     RadioButton rb;
@@ -32,21 +31,16 @@ public class Quiz1 extends AppCompatActivity {
                 }
                 else {
                     rb=(RadioButton) findViewById(rg.getCheckedRadioButtonId());
-                    //Toast.makeText(getApplicationContext(),rb.getText().toString(),Toast.LENGTH_SHORT).show();
                     if(rb.getText().toString().equals(RepCorrect)){
                         score+=1;
-                        //Toast.makeText(getApplicationContext(),score+"",Toast.LENGTH_SHORT).show();
                     }
                     Intent intent=new Intent(Quiz1.this,Quiz2.class);
                     intent.putExtra("score",score);
                     startActivity(intent);
-                    //overridePendingTransition(R.anim.fadein,R.anim.fadeout);
                     overridePendingTransition(R.anim.exit,R.anim.entry);
                     finish();
                 }
-
             }
         });
-
     }
 }

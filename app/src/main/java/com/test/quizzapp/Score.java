@@ -12,7 +12,7 @@ import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Score extends AppCompatActivity {
-    Button bLogout, bTry;
+    Button bLogout, bTry, bLoc;
     DonutProgress donut_progress;
     int score;
 
@@ -23,16 +23,15 @@ public class Score extends AppCompatActivity {
         donut_progress=(DonutProgress) findViewById(R.id.donut_progress);
         bLogout=(Button) findViewById(R.id.bLogout);
         bTry=(Button) findViewById(R.id.bTry);
+        bLoc = (Button) findViewById(R.id.bLoc);
         Intent intent=getIntent();
         score=intent.getIntExtra("score",0) ;
         donut_progress.setDonut_progress((100*score/5)+"");
-        //Toast.makeText(getApplicationContext(),score+"",Toast.LENGTH_SHORT).show();
         bLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Merci de votre Participation !", Toast.LENGTH_SHORT).show();
                 FirebaseAuth.getInstance().signOut();
-
                 finish();
             }
         });
@@ -44,7 +43,7 @@ public class Score extends AppCompatActivity {
             }
         });
 
-        bTry.setOnClickListener(new View.OnClickListener() {
+        bLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Score.this,userLocation.class));
